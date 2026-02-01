@@ -20,19 +20,24 @@ dis_adv : recursive approach
 int *unfold( int mat[][columns] )
 {
   int *arr = calloc( sizeof(int), len ) ;
-  /*
-  code body
-  */
+
+ for(int i=0; i<batches; i++)
+  {
+   for(int j=0; j<batchSize; j++)
+    {
+     arr[ i*batchSize + j ] = mat[i][j];
+    }
+  }
   return  arr;
 }
 
 int searchByHalves( int *unfolded, low, high )
-{
-  int min = 0;
-  /*
-    code body
+{ 
+  int min = low;
+ /*
+  code
   */
-   return min;
+  return min;
 }
 
 int main()
