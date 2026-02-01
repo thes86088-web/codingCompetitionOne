@@ -8,9 +8,8 @@ void reset(int z[2])
   z[1] = 0;
 }
 
-int *product( int * *a , int * *b )
+int *product( int *a , int *b )
 {
-  
   int *p = malloc( sizeof(int)*2  );
   reset(p);
   p[0] = ((a[0])*(b[0])) - ( (a[1])*(b[1]) );
