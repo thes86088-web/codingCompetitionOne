@@ -2,10 +2,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int count = 0;
+
 void reset(int z[2])
 {
   z[0] = 0;
   z[1] = 0;
+}
+
+int *user_input(){
+    int *z = malloc( sizeof(int)*2  ) ;
+  printf("enter real part of z-%d : ", count); scanf("%d", z);
+  printf("\n");
+  printf("enter iamginary part of z-%d : ", count); scanf("%d", z+1);
+   printf("\n");
+  count = count+1;
+  return z;
 }
 
 int *product( int *a , int *b )
@@ -42,7 +54,8 @@ int *quotient( int *a , int *b )
 }
 
 int main()
-{  int *a = create(2,4); int *b = create(3,1);
+{  int *a = user_input();
+ int *b = user_input();
   int *p = product(a, b); 
   printf( "the required product is %d + %dj ",  p[0], p[1] ) ;
   printf("\n");
