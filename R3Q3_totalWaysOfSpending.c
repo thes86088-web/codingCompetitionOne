@@ -7,8 +7,10 @@ int items = ( sizeof(prices) )/( sizeof(*prices) ) ;
 
 int validSpending( int amount, int prices, int items )
 {
+  if( amount < 0 ) return 0;
 
-  
+  else if( amount == 0 ) return 0;
+
 }
 
 int main()
