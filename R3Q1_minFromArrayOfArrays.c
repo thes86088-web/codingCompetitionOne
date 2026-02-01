@@ -1,16 +1,5 @@
-/*
-Input Provided :
-int arr[][] or int **arr
-(positive integers)
-
-Output Expected :
-the integer with minimum value from the given 2D array
-*/
-
-/*
-Approach-1 : Searching using Nested Loops
-*/
-
+#include <stdio.h>
+#include <stdlib.h>
 
 /*
 Approach-2 : Searching by dividing into Halves
@@ -18,7 +7,38 @@ constraint: int* is preferrable over int[][]
 dis_adv : recursive approach
 */
 
-/*
-Approach-3 : Unfolding ( int arr[][] --> int *arr ) and performing linear search 
-dis_adv :  : has to visit every element twice ( once for unfolding and once for searching )
-*/
+#define batchSize 5 
+#define batches 3
+
+ int marks[batches][batchSize] = { { 2,5,6,11,3},
+ { 3,5,9,4,2},
+ { 13, 5, 1, 8, 7},
+ };
+
+#define len batchSize*batches
+
+int *unfold( int mat[][columns] )
+{
+  int *arr = calloc( sizeof(int), len ) ;
+  /*
+  code body
+  */
+  return  arr;
+}
+
+int searchByHalves( int *unfolded, low, high )
+{
+  int min = 0;
+  /*
+    code body
+  */
+   return min;
+}
+
+int main()
+{
+  int *marksList = unfold(marks);
+  int min_marks = searchByHalves( marksList, 0, len-1 );
+  printf( "lowest marks obtained = %d", min_marks );
+  printf("\n");
+}
