@@ -31,28 +31,28 @@ int *unfold( int mat[][batchSize] )
 	return  arr;
 }
 
-//int searchByHalves( int *unfolded, int low, int high, int default_min )
-int searchByHalves( int unfolded[], int low, int high)
-{
-	if(low == high ) return low;
-	if( low<high && low>=0 )
-	{
-		int half = ( low + high )/2;
+//int searchByHalves( int unfolded[], int low, int high, int default_min )
+int searchByHalves(int *unfolded, int low, int high) {
+    if (low == high) {
+        return low;
+    }
 
-			int left = searchByHalves(unfolded, low, half );
-			int right = searchByHalves( unfolded, half+1, high );
-			if( unfolded[left]<unfolded[right] && left>=0 && left<=right  ) return left;
-			else if( unfolded[left]>unfolded[right] && right>=low  ) return right;
-	}
+    int half = (low + high) / 2;
 
-	return -1;
+    int left = searchByHalves(unfolded, low, half);
+    int right = searchByHalves(unfolded, half + 1, high);
+
+    if (unfolded[left] < unfolded[right]) {
+        return left;
+    } else {
+        return right;
+    }
 }
-
 
 int main()
 {
-// int *marksList = unfold(marks);
-	int marksList[] = {  2,5,6,11,3,4,5,9,4,2, 13, 5, 11, 8, 7 };
+     int *marksList = unfold(marks);
+	//int marksList[] = {  2,5,6,11,3,4,5,9,4,2, 13, 5, 11, 8, 7 };
 	int min_marks = searchByHalves( marksList, 0, len-1 );
 	printf( "lowest marks obtained = %d", marksList[min_marks] );
 	printf("\n");
