@@ -1,12 +1,30 @@
-/*
 
-input provided : complex numbers a, b
+#include <stdio.h>
 
-output expected :
-i. product of these numbers ( a*b )
-ii. quotient of these nemubers ( a/b ) 
+struct complex
+{ 
+  int real ;
+  int imaginary;
+};
 
-approach :
-define struct complex
+typedef struct complex Complex ;
 
-*/
+Complex *product( Complex a , Complex b )
+{
+  
+}
+
+
+Complex *quotient( Complex a , Complex b )
+{
+  
+}
+
+int main()
+{
+  Complex *p = product(a, b); 
+  printf( "the required product is %d + %dj ",  p->real, p->imaginary ) ;
+  printf("\n");
+  Complex *q = quotient(a,b);
+  printf( "the required quotient is %d + %dj ", q->real, q->imaginary ) ;  
+}
