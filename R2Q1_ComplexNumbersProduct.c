@@ -19,6 +19,10 @@ void reset(Complex *r)
 Complex *product( Complex *a , Complex *b )
 {
   
+  Complex *p = malloc( sizeof(Complex)  );
+  reset(p);
+  p->real = ((a->real)*(b->real)) - ( (a->imaginary)*(b->imaginary) );
+  p->imaginary = ((a->real)*(b->imaginary)) - ( (a->imaginary)*(b->real) ) ;
 }
 
 
