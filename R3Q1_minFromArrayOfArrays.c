@@ -1,24 +1,33 @@
-/*
-Input Provided :
-int arr[][] or int **arr
-(positive integers)
-
-Output Expected :
-the integer with minimum value from the given 2D array
-*/
-
+#include <stdio.h>
 /*
 Approach-1 : Searching using Nested Loops
 */
+#define batchSize 5 
+#define batches 3
 
+ int marks[batches][batchSize] = { { 2,5,6,11,3},
+ { 3,5,9,4,2},
+ { 13, 5, 1, 8, 7},
+ };
 
-/*
-Approach-2 : Searching by dividing into Halves
-constraint: int* is preferrable over int[][]
-dis_adv : recursive approach
-*/
+int *lowestMarks( marks )
+{
+  int *min_info = calloc( sizeof(int), 2 );
+   
+  for( int i = 0; i<batches; i++ )
+  {
+      for( int i = 0; i<batches; i++ )
+    {
+        /*code body*/    
+    }
 
-/*
-Approach-3 : Unfolding ( int arr[][] --> int *arr ) and performing linear search 
-dis_adv :  : has to visit every element twice ( once for unfolding and once for searching )
-*/
+  }
+  return min_info;
+}
+
+int main()
+{
+  int *min_info = lowestMarks( marks );
+  printf( "lowest marks are obtained in batch-%d by roll-%d : ", min_info[0], min_info[1] );
+  printf("\n");
+}
