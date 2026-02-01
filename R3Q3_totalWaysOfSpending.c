@@ -1,17 +1,18 @@
 
-/*
+#include <stdio.h>
 
-input provided : int amount, int costs[]
+int amount = 20 ;
+int prices[] = {20, 10, 5} ;
+int items = ( sizeof(prices) )/( sizeof(*prices) ) ;
 
-output expected : total ways of spending the given amout with the given options/items
+int validSpending( int amount, int prices, int items )
+{
 
-*/
+  
+}
 
-/*
-
-approach : ways of n->0 = ways of n->cost[i] + ways of (n-cost[i])->0 
-
-dis_adv = recursive approach
-
-improvements possible : memoization of overlapping subproblems
-*/
+int main()
+{
+    int ways = validSpending( amount, prices, items );
+    printf( "total valid ways of spending are : %d " );
+}
