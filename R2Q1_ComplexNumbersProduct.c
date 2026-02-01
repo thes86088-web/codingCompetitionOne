@@ -2,58 +2,51 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct complex
-{ 
-  int real ;
-  int imaginary;
-};
-
-typedef struct complex Complex ;
-
-void reset(Complex *z)
+void reset(int z[2])
 {
-  z->real = 0;
-  z->imaginary = 0;
+  z[0] = 0;
+  z[1] = 0;
 }
 
-Complex *product( Complex *a , Complex *b )
+int *product( int * *a , int * *b )
 {
   
-  Complex *p = malloc( sizeof(Complex)  );
+  int *p = malloc( sizeof(int)*2  );
   reset(p);
-  p->real = ((a->real)*(b->real)) - ( (a->imaginary)*(b->imaginary) );
-  p->imaginary = ((a->real)*(b->imaginary)) + ( (a->imaginary)*(b->real) ) ;
+  p[0] = ((a[0])*(b[0])) - ( (a[1])*(b[1]) );
+  p[1] = ((a[0])*(b[1])) + ( (a[1])*(b[0]) ) ;
   return p;
 }
 
-Complex *create( int rl, int img )
+int *create( int rl, int img )
 {
-    Complex *z = malloc( sizeof(Complex)  );
-  z->real = rl; z->imaginary = img ;
+    int *z = malloc( sizeof(int)*2  );
+  z[0] = rl; z[1] = img ;
+  return z;
 }
 
-void shrink( Complex *z, int fac )
+void shrink( int *z, int fac )
 {
-  z->real = (z->real)/fac; 
-  z->imaginary = (z->imaginary)/fac ;
+  z[0] = (z[0])/fac; 
+  z[1] = (z[1])/fac ;
 }
 
 
-Complex *quotient( Complex *a , Complex *b )
+int *quotient( int *a , int *b )
 {
-  int mag_b = ( (b->real)*(b->real) ) + ( (b->imaginary)*(b->imaginary) ) ;
-  Complex *q = malloc( sizeof(Complex)  );
-  Complex *conj_b = create( b->real, -1*(b->imaginary) ) ;
+  int mag_b = ( (b[0])*(b[0]) ) + ( (b[1])*(b[1]) ) ;
+  int *q = malloc( sizeof(int)*2  );
+  int *conj_b = create( b[0], -1*(b[1]) ) ;
   q = product(a, conj_b);
   shrink(q, mag_b );
   return q;
 }
 
 int main()
-{  Complex *a = create(2,4); Complex *b = create(3,1);
-  Complex *p = product(a, b); 
-  printf( "the required product is %d + %dj ",  p->real, p->imaginary ) ;
+{  int *a = create(2,4); int *b = create(3,1);
+  int *p = product(a, b); 
+  printf( "the required product is %d + %dj ",  p[0], p[1] ) ;
   printf("\n");
-  Complex *q = quotient(a ,b);
-  printf( "the required quotient is %d + %dj ", q->real, q->imaginary ) ;  
+  int *q = quotient(a ,b);
+  printf( "the required quotient is %d + %dj ", q[0], q[1] ) ;  
 }
