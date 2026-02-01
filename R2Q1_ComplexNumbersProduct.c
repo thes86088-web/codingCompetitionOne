@@ -26,8 +26,9 @@ Complex *product( Complex *a , Complex *b )
   return p;
 }
 
-void create( Complex *z, int rl, int img )
+Complex *create( int rl, int img )
 {
+    Complex *z = malloc( sizeof(Complex)  );
   z->real = rl; z->imaginary = img ;
 }
 
@@ -42,17 +43,17 @@ Complex *quotient( Complex *a , Complex *b )
 {
   int mag_b = ( (b->real)*(b->real) ) + ( (b->imaginary)*(b->imaginary) ) ;
   Complex *q = malloc( sizeof(Complex)  );
-  Complex conj_b ; create( &conj_b, b->real, -1*(b->imaginary) ) ;
-  q = product(a, &conj_b);
+  Complex *conj_b = create( b->real, -1*(b->imaginary) ) ;
+  q = product(a, conj_b);
   shrink(q, mag_b );
   return q;
 }
 
 int main()
-{
-  Complex *p = product(&a, &b); 
+{  Complex *a = create(2,4); Complex *b = create(3,1);
+  Complex *p = product(a, b); 
   printf( "the required product is %d + %dj ",  p->real, p->imaginary ) ;
   printf("\n");
-  Complex *q = quotient(&a ,&b);
+  Complex *q = quotient(a ,b);
   printf( "the required quotient is %d + %dj ", q->real, q->imaginary ) ;  
 }
